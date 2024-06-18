@@ -18,29 +18,19 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice() {
-    let humanChoice;
-    // Prompt the user for input
-    humanChoice = prompt("Let's play Rock Scissors and Paper with me!");
-    // Return the user's input
-    return humanChoice;
-}
-// Log the result of the function to the console
 
 let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice, computerChoice){
-    let validHumanChoice;
-    validHumanChoice=humanChoice.toLowerCase();
-    if((validHumanChoice==="rock"&&computerChoice==="scissors") || (validHumanChoice==="scissors"&&computerChoice==="paper")||(validHumanChoice==="paper"&&computerChoice==="rock")){
-        console.log(`You win! ${validHumanChoice} beats ${computerChoice}`);
+    if((humanChoice==="rock"&&computerChoice==="scissors") || (humanChoice==="scissors"&&computerChoice==="paper")||(validHumanChoice==="paper"&&computerChoice==="rock")){
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
         return humanScore++;
-    }else if(validHumanChoice===computerChoice){
+    }else if(humanChoice===computerChoice){
         console.log("It's tie! ");
         //when it's not tie or win, then the only case left is "computer Win"
     }else{
-        console.log(`You lose! ${computerChoice} beats ${validHumanChoice}`);
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
         return computerScore++;
     }
 }
@@ -55,12 +45,10 @@ function playAnotherRound(){
     console.log("Your Score:", humanScore);
 }
 
-function playFiveRounds(){
-    playAnotherRound();
-    playAnotherRound();
-    playAnotherRound();
-    playAnotherRound();
-    playAnotherRound();
-}
+const rockBtn=document.querySelector('#rockButton');
+const paperBtn=document.querySelector('#paperButton');
+const scissorsBtn=document.querySelector('#scissorsButton');
 
-playFiveRounds();
+rockBtn.addEventListener('click',()=>{
+    humanChoice=rock});
+    //pass rock value to humanChoice & callback playRound to output computer win or human win
