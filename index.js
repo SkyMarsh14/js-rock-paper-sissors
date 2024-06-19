@@ -23,14 +23,17 @@ let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice, computerChoice){
-    if((humanChoice==="rock"&&computerChoice==="scissors") || (humanChoice==="scissors"&&computerChoice==="paper")||(validHumanChoice==="paper"&&computerChoice==="rock")){
-        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+    if((humanChoice==="rock"&&computerChoice==="scissors") || 
+    (humanChoice==="scissors"&&computerChoice==="paper")||
+    (humanChoice==="paper"&&computerChoice==="rock")){
+        resultMessage.textContent=`You win! ${humanChoice} beats ${computerChoice}`;
+        document.body.appendChild(resultMessage);
         return humanScore++;
     }else if(humanChoice===computerChoice){
-        console.log("It's tie! ");
+        resultMessage.textContent="It's tie! ";
         //when it's not tie or win, then the only case left is "computer Win"
     }else{
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        resultMessage.textContent=`You lose! ${computerChoice} beats ${humanChoice}`;
         return computerScore++;
     }
 }
@@ -49,6 +52,11 @@ const rockBtn=document.querySelector('#rockButton');
 const paperBtn=document.querySelector('#paperButton');
 const scissorsBtn=document.querySelector('#scissorsButton');
 
-rockBtn.addEventListener('click',()=>{
-    humanChoice=rock});
-    //pass rock value to humanChoice & callback playRound to output computer win or human win
+const resultMessage=document.createElement('div');
+
+
+const btnsContainer=document.querySelector('.buttonContainer');
+btnsContainer.addEventListener('click',(event)=>{
+    let humanChoice=(event.target.textContent).toLowerCase();
+    playRound(humanChoice,getComputerChoice());
+})
